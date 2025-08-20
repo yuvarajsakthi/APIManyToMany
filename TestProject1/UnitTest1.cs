@@ -1,6 +1,6 @@
 
-using APIKanini.Interface;
-using APIKanini.Models;
+using APIManyToMany.Interface;
+using APIManyToMany.Models;
 using Moq;
 using System.Numerics;
 

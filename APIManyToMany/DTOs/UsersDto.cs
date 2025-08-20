@@ -1,6 +1,6 @@
-﻿using APIKanini.Models;
+﻿using APIManyToMany.Models;
 
-namespace APIKanini.DTOs
+namespace APIManyToMany.DTOs
 {
     public class UsersDto
     {

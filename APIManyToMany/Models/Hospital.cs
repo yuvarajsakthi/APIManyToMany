@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 
-namespace APIKanini.Models
+namespace APIManyToMany.Models
 {
     public class Hospital
     {

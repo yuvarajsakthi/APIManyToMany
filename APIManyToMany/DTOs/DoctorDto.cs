@@ -1,4 +1,4 @@
-﻿namespace APIKanini.DTOs
+﻿namespace APIManyToMany.DTOs
 {
     public class DoctorDto
     {

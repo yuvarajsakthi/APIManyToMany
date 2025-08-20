@@ -1,11 +1,11 @@
-﻿using APIKanini.DTOs;
-using APIKanini.Models;
-using APIKanini.Service;
+﻿using APIManyToMany.DTOs;
+using APIManyToMany.Models;
+using APIManyToMany.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APIKanini.Controllers
+namespace APIManyToMany.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

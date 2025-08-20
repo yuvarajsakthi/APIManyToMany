@@ -1,9 +1,9 @@
-﻿using APIKanini.Data;
-using APIKanini.Interface;
-using APIKanini.Models;
+﻿using APIManyToMany.Data;
+using APIManyToMany.Interface;
+using APIManyToMany.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace APIKanini.Repository
+namespace APIManyToMany.Repository
 {
     public class UserRepository :IHospitalAPI<User>,IUser
     {

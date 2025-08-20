@@ -1,6 +1,6 @@
-﻿using APIKanini.Models;
+﻿using APIManyToMany.Models;
 
-namespace APIKanini.Interface
+namespace APIManyToMany.Interface
 {
     public interface IHospitalAPI<T> where T : class
     {
@@ -15,4 +15,7 @@ namespace APIKanini.Interface
     {
         Task<User> GetByUsernameAsync(string username);
     }
+
+
+
 }

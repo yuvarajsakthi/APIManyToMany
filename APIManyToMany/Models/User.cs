@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace APIKanini.Models
+namespace APIManyToMany.Models
 {
     public class User
     {

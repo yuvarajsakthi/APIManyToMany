@@ -1,8 +1,8 @@
-﻿namespace APIKanini.Models
+﻿namespace APIManyToMany.Models
 {
     public class Doctor
     {
-        public string DoctorId { get; set; }
+        public string DoctorId { get; set; } 
         public string? Name { get; set; }
         public string? Specialization { get; set; }
 

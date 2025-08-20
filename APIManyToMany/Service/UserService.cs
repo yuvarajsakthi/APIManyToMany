@@ -1,8 +1,8 @@
-﻿using APIKanini.DTOs;
-using APIKanini.Interface;
-using APIKanini.Models;
+﻿using APIManyToMany.DTOs;
+using APIManyToMany.Interface;
+using APIManyToMany.Models;
 
-namespace APIKanini.Service
+namespace APIManyToMany.Service
 {
     public class UserService
     {

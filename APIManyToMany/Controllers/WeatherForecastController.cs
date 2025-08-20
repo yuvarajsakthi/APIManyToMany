@@ -1,7 +1,7 @@
 using APIManyToMany;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APIKanini.Controllers
+namespace APIManyToMany.Controllers
 {
     [ApiController]
     [Route("[controller]")]

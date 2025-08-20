@@ -1,11 +1,11 @@
-﻿using APIKanini.Interface;
-using APIKanini.Models;
+﻿using APIManyToMany.Interface;
+using APIManyToMany.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace APIKanini.Service
+namespace APIManyToMany.Service
 {
     public class TokenService : IToken
     {

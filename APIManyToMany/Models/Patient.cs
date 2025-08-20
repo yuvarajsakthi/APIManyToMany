@@ -1,4 +1,4 @@
-﻿namespace APIKanini.Models
+﻿namespace APIManyToMany.Models
 {
     public class Patient
     {

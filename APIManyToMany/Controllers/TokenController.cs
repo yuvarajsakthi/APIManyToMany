@@ -1,14 +1,12 @@
-﻿using APIKanini.DTOs;
-using APIKanini.Interface;
-using APIKanini.Models;
-using APIKanini.Service;
+﻿using APIManyToMany.DTOs;
+using APIManyToMany.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace APIKanini.Controllers
+namespace APIManyToMany.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -20,7 +18,7 @@ namespace APIKanini.Controllers
 
         public TokenController(IConfiguration configuration,IUser user,IToken tokenService)
         {
-            _key = new SymmetricSecurityKey(UTF8Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!));
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!));
             _tokenService = tokenService;
             _userSer = user;
         }

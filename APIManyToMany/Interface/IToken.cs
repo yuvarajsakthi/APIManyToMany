@@ -1,6 +1,6 @@
-﻿using APIKanini.Models;
+﻿using APIManyToMany.Models;
 
-namespace APIKanini.Interface
+namespace APIManyToMany.Interface
 {
     public interface IToken
     {

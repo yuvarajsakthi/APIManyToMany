@@ -1,8 +1,8 @@
-using APIKanini.Data;
-using APIKanini.Interface;
-using APIKanini.Models;
-using APIKanini.Repository;
-using APIKanini.Service;
+using APIManyToMany.Data;
+using APIManyToMany.Interface;
+using APIManyToMany.Models;
+using APIManyToMany.Repository;
+using APIManyToMany.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

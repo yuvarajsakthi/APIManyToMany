@@ -1,7 +1,6 @@
-﻿using APIKanini.Models;
-using System.Globalization;
+﻿using System.Globalization;
 
-namespace APIKanini.DTOs
+namespace APIManyToMany.DTOs
 {
     public class LoginDto
     {
