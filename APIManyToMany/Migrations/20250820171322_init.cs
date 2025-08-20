@@ -83,7 +83,7 @@ namespace APIManyToMany.Migrations
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    RoleId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -92,32 +92,31 @@ namespace APIManyToMany.Migrations
                         name: "FK_Users_Roles_RoleId",
                         column: x => x.RoleId,
                         principalTable: "Roles",
-                        principalColumn: "RoleId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "RoleId");
                 });
 
             migrationBuilder.CreateTable(
                 name: "DoctorPatients",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PatientId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    DoctorsDoctorId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    PatientsPatientId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DoctorPatients", x => x.Id);
+                    table.PrimaryKey("PK_DoctorPatients", x => new { x.DoctorsDoctorId, x.PatientsPatientId });
                     table.ForeignKey(
-                        name: "FK_DoctorPatients_Doctors_DoctorId",
-                        column: x => x.DoctorId,
+                        name: "FK_DoctorPatients_Doctors_DoctorsDoctorId",
+                        column: x => x.DoctorsDoctorId,
                         principalTable: "Doctors",
-                        principalColumn: "DoctorId");
+                        principalColumn: "DoctorId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_DoctorPatients_Patients_PatientId",
-                        column: x => x.PatientId,
+                        name: "FK_DoctorPatients_Patients_PatientsPatientId",
+                        column: x => x.PatientsPatientId,
                         principalTable: "Patients",
-                        principalColumn: "PatientId");
+                        principalColumn: "PatientId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -144,9 +143,9 @@ namespace APIManyToMany.Migrations
                 columns: new[] { "DoctorId", "HospitalId", "Name", "Specialization" },
                 values: new object[,]
                 {
-                    { "DOC001", "HOS001", "Dr. Smith", "Cardiology" },
-                    { "DOC002", "HOS001", "Dr. John", "Neurology" },
-                    { "DOC003", "HOS002", "Dr. Emma", "Pediatrics" }
+                    { "DOC001", "HOS001", "Dr. Smith", null },
+                    { "DOC002", "HOS001", "Dr. John", null },
+                    { "DOC003", "HOS002", "Dr. Emma", null }
                 });
 
             migrationBuilder.InsertData(
@@ -169,25 +168,10 @@ namespace APIManyToMany.Migrations
                     { "U003", "patient@hospital.com", "hashed789", "R003", "PatientMary" }
                 });
 
-            migrationBuilder.InsertData(
-                table: "DoctorPatients",
-                columns: new[] { "Id", "DoctorId", "PatientId" },
-                values: new object[,]
-                {
-                    { 1, "DOC001", "PAT001" },
-                    { 2, "DOC001", "PAT002" },
-                    { 3, "DOC002", "PAT003" }
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_DoctorPatients_DoctorId",
+                name: "IX_DoctorPatients_PatientsPatientId",
                 table: "DoctorPatients",
-                column: "DoctorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DoctorPatients_PatientId",
-                table: "DoctorPatients",
-                column: "PatientId");
+                column: "PatientsPatientId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Doctors_HospitalId",

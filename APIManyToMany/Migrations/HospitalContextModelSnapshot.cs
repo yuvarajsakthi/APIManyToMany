@@ -47,22 +47,19 @@ namespace APIManyToMany.Migrations
                         {
                             DoctorId = "DOC001",
                             HospitalId = "HOS001",
-                            Name = "Dr. Smith",
-                            Specialization = "Cardiology"
+                            Name = "Dr. Smith"
                         },
                         new
                         {
                             DoctorId = "DOC002",
                             HospitalId = "HOS001",
-                            Name = "Dr. John",
-                            Specialization = "Neurology"
+                            Name = "Dr. John"
                         },
                         new
                         {
                             DoctorId = "DOC003",
                             HospitalId = "HOS002",
-                            Name = "Dr. Emma",
-                            Specialization = "Pediatrics"
+                            Name = "Dr. Emma"
                         });
                 });
 
@@ -173,7 +170,6 @@ namespace APIManyToMany.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("UserName")
@@ -214,47 +210,17 @@ namespace APIManyToMany.Migrations
 
             modelBuilder.Entity("DoctorPatients", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("DoctorId")
-                        .IsRequired()
+                    b.Property<string>("DoctorsDoctorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("PatientId")
-                        .IsRequired()
+                    b.Property<string>("PatientsPatientId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+                    b.HasKey("DoctorsDoctorId", "PatientsPatientId");
 
-                    b.HasIndex("DoctorId");
+                    b.HasIndex("PatientsPatientId");
 
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("DoctorPatients", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DoctorId = "DOC001",
-                            PatientId = "PAT001"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DoctorId = "DOC001",
-                            PatientId = "PAT002"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DoctorId = "DOC002",
-                            PatientId = "PAT003"
-                        });
+                    b.ToTable("DoctorPatients");
                 });
 
             modelBuilder.Entity("APIManyToMany.Models.Doctor", b =>
@@ -283,9 +249,7 @@ namespace APIManyToMany.Migrations
                 {
                     b.HasOne("APIManyToMany.Models.Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
                 });
@@ -294,14 +258,14 @@ namespace APIManyToMany.Migrations
                 {
                     b.HasOne("APIManyToMany.Models.Doctor", null)
                         .WithMany()
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .HasForeignKey("DoctorsDoctorId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("APIManyToMany.Models.Patient", null)
                         .WithMany()
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .HasForeignKey("PatientsPatientId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
